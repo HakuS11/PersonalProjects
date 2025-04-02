@@ -1,3 +1,5 @@
+//Compile using g++ -o anyName main.cpp person.cpp
+
 #include <iostream>
 #include <limits>
 #include "person.h"
