@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits>
 #include "person.h"
 
 int main() {
@@ -17,7 +18,22 @@ int main() {
         std::cout << "Choose an option: ";
 
         int choice;
-        std::cin >> choice;
+        const int MAX_RETRIES = 3;
+        int retries = 0;
+        
+        while (!(std::cin >> choice) || choice < 1 || choice > 4) {
+            if (retries >= MAX_RETRIES) {
+                std::cout << "Too many invalid attempts. Please restart the program.\n";
+                return 1;
+            }
+            
+            std::cin.clear(); // Clear error flags
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear input buffer
+            std::cout << "Invalid choice! Please select 1, 2, 3, or 4.\n";
+            std::cout << "Choose an option: ";
+            retries++;
+        }
+        
         std::cin.ignore();  // To clear the newline character
 
         if (choice == 1) {
@@ -49,9 +65,6 @@ int main() {
         else if (choice == 4) {
             std::cout << "Exiting program.\n";
             break;
-        } 
-        else {
-            std::cout << "Invalid choice! Please select 1, 2, 3, or 4.\n";
         }
     }
 
