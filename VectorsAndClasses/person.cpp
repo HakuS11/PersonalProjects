@@ -25,8 +25,11 @@ void Person::printInventory() const {
     if (inventory.empty()) {
         std::cout << "No items in inventory.";
     } else {
-        for (const std::string& item : inventory) {
-            std::cout << item << " ";
+        for (auto it = inventory.begin(); it != inventory.end(); ++it) {
+            std::cout << *it;
+            if (std::next(it) != inventory.end()) {
+                std::cout << ", ";
+            }
         }
     }
     std::cout << std::endl;
