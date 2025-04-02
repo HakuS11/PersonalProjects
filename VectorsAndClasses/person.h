@@ -9,11 +9,11 @@ class Person {
     std::vector<std::string> inventory;
 
 public:
-    Person(std::string new_name);
+    Person(const std::string& new_name);
     ~Person();
 
-    void addToInventory(std::string item);
-    void removeFromInventory(std::string item);
+    void addToInventory(const std::string& item);
+    void removeFromInventory(const std::string& item);
     void printInventory() const;
 };
 
